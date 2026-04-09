@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config-portal-api
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/config_portal_db
+      auto-index-creation: true
+
+server:
+  port: 8080
+
+logging:
+  level:
+    com.iorigination: DEBUG
