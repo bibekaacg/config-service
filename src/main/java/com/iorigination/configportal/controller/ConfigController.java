@@ -10,13 +10,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class ConfigController {
 
     private final ConfigService service;
@@ -43,8 +44,10 @@ public class ConfigController {
 
     // ── Configs ────────────────────────────────────────────
     @GetMapping("/configs")
-    public List<GlobalConfig> getAllConfigs() {
-        return service.getAllConfigs();
+    public Map getAllConfigs() {
+        Map<String, Object> response = new HashMap<>();
+        response.put("allConfigs", service.getAllConfigs());
+        return response;
     }
 
     @GetMapping("/configs/{market}")
@@ -75,8 +78,10 @@ public class ConfigController {
 
     // ── Pending Approvals ──────────────────────────────────
     @GetMapping("/approvals/pending")
-    public List<AuditLog> getPendingApprovals() {
-        return service.getPendingApprovals();
+    public Map getPendingApprovals() {
+        Map<String, Object> response = new HashMap<>();
+        response.put("allConfigs", service.getPendingApprovals());
+        return response;
     }
 
     // ── Approve ────────────────────────────────────────────
