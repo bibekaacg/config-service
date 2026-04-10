@@ -4,9 +4,11 @@ import com.iorigination.configportal.model.AuditLog;
 import com.iorigination.configportal.model.CountryMaster;
 import com.iorigination.configportal.model.GlobalConfig;
 import com.iorigination.configportal.model.SupportedIntegration;
+import com.iorigination.configportal.repository.AuditLogRepository;
 import com.iorigination.configportal.service.ConfigService;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +23,9 @@ import java.util.Map;
 public class ConfigController {
 
     private final ConfigService service;
+
+    @Autowired
+    AuditLogRepository auditLogRepository;
 
     @PostConstruct
     public void init() {
@@ -113,11 +118,19 @@ public class ConfigController {
         }
     }
 
+    @GetMapping("/configs/audit/history")
+    public Map getAllHistory() {
+        Map<String, Object> response = new HashMap<>();
+        response.put("allConfigs", auditLogRepository.findAll());
+        return response;
+    }
     // ── Audit History ──────────────────────────────────────
     @GetMapping("/configs/{market}/{product}/history")
-    public List<AuditLog> getHistory(
+    public Map getHistory(
             @PathVariable String market, @PathVariable String product) {
-        return service.getAuditHistory(market, product);
+        Map<String,Object> response = new HashMap<>();
+        response.put("allConfigs", service.getAuditHistory(market, product));
+        return response;
     }
 
     // ── Rollback ───────────────────────────────────────────
