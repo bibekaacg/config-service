@@ -1,6 +1,6 @@
-package com.iorigination.configportal.repository;
+package com.bibek.configportal.repository;
 
-import com.iorigination.configportal.model.SupportedIntegration;
+import com.bibek.configportal.model.SupportedIntegration;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;

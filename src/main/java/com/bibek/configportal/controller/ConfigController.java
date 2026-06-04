@@ -1,11 +1,11 @@
-package com.iorigination.configportal.controller;
+package com.bibek.configportal.controller;
 
-import com.iorigination.configportal.model.AuditLog;
-import com.iorigination.configportal.model.CountryMaster;
-import com.iorigination.configportal.model.GlobalConfig;
-import com.iorigination.configportal.model.SupportedIntegration;
-import com.iorigination.configportal.repository.AuditLogRepository;
-import com.iorigination.configportal.service.ConfigService;
+import com.bibek.configportal.model.AuditLog;
+import com.bibek.configportal.model.CountryMaster;
+import com.bibek.configportal.model.GlobalConfig;
+import com.bibek.configportal.model.SupportedIntegration;
+import com.bibek.configportal.repository.AuditLogRepository;
+import com.bibek.configportal.service.ConfigService;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

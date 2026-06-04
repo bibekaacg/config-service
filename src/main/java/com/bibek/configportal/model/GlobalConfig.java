@@ -1,4 +1,4 @@
-package com.iorigination.configportal.model;
+package com.bibek.configportal.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
